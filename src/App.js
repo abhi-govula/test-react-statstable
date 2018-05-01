@@ -55,13 +55,16 @@ class App extends Component {
     clearInterval(this.interval);
   }
   getData() {
-    const url = "https://4uakzzndd6.execute-api.us-east-1.amazonaws.com//EV-BatteryStatusApi-test-us-east-1";
+    const url = "https://4uakzzndd6.execute-api.us-east-1.amazonaws.com/test/EV-BatteryStatusApi-test-us-east-1?customerName=Gillig";
     axios.get(url).then((data) => {
+      console.log (data);
       if (data) {
-        this.setState({ data });
+        const items = data.EVBatterySummaryAPI;
+        this.setState({ data: items });
       }
     })
       .catch((error) => {
+        console.log(error);
         this.setState({ data: [] });
       });
   }
