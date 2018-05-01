@@ -6,11 +6,11 @@ const Bar = (props) => {
 class StatsTable extends Component {
   render() {
     const rowData = this.props.data.map((itm) => {
-      return (<tr key={itm.EquipmentID}>
-        <td>{itm.EquipmentID}</td>
-        <td className="percentagecol"><Bar val={itm.SoC} /></td>
-        <td>{itm.RemainingRangeMiles}</td>
-        <td>{itm.SoH}</td>
+      return (<tr key={itm.customerEquipId}>
+        <td>{itm.customerEquipId}</td>
+        <td className="percentagecol"><Bar val={itm.chargeState} /></td>
+        <td>{itm.distRemainMile}</td>
+        <td>{itm.healthState}</td>
       </tr>)
     })
     return (<table className="statstable">
