@@ -49,6 +49,7 @@ class App extends Component {
     this.getData = this.getData.bind(this);
   }
   componentDidMount() {
+    this.getData();
     this.interval = setInterval(() => this.getData(), 5000);
   }
   componentWillUnmount() {
@@ -57,9 +58,8 @@ class App extends Component {
   getData() {
     const url = "https://4uakzzndd6.execute-api.us-east-1.amazonaws.com/test/EV-BatteryStatusApi-test-us-east-1?customerName=Gillig";
     axios.get(url).then((data) => {
-      console.log (data);
-      if (data) {
-        const items = data.EVBatterySummaryAPI;
+      if (data.data) {
+        const items = data.data.EVBatterySummaryAPI;
         this.setState({ data: items });
       }
     })
